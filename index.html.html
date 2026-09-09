@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raj TR — Forex Trader Portfolio</title>
+<meta name="description" content="Raj TR (Ritesh Raj Mandal) — Forex Trader Portfolio, trading journey, weekly and monthly reports.">
+<style>
+:root{
+  --bg:#060a0f; --panel:#0c121a; --panel2:#101923; --line:#1b2938;
+  --text:#eef4fa; --muted:#8796a8; --green:#20d58a; --red:#ff5d73;
+  --gold:#f5c451; --blue:#58a6ff; --shadow:0 20px 60px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 80% 0%,#122132 0,#060a0f 35%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:20;background:rgba(6,10,15,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;letter-spacing:.5px;font-size:21px}.logo span{color:var(--green)}
+.navlinks{display:flex;gap:24px;color:var(--muted);font-size:14px}.navlinks a:hover{color:white}
+.hero{min-height:680px;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid #1d5946;background:#0a1d17;color:#6ee8b4;border-radius:99px;padding:8px 13px;font-size:12px;font-weight:700}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green)}
+h1{font-size:clamp(46px,7vw,82px);line-height:.95;margin:22px 0 18px;letter-spacing:-4px}
+h1 span{color:var(--green)}
+.hero p{font-size:18px;line-height:1.7;color:var(--muted);max-width:620px}
+.buttons{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{padding:13px 18px;border-radius:10px;border:1px solid var(--line);font-weight:750;font-size:14px}
+.btn.primary{background:var(--green);color:#04110b;border-color:var(--green)}
+.btn:hover{transform:translateY(-2px)}
+.terminal{background:linear-gradient(145deg,#0e1721,#080d13);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.termhead{padding:13px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px;color:var(--muted);font-size:12px}
+.circle{width:9px;height:9px;border-radius:50%;background:#394756}.termtitle{margin-left:auto}
+.chart{height:360px;padding:20px;position:relative}
+.grid{position:absolute;inset:20px;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:50px 50px}
+svg{position:relative;width:100%;height:100%}
+section{padding:85px 0}.sectionhead{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px;gap:20px}
+.eyebrow{color:var(--green);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:2px}
+h2{font-size:38px;margin:8px 0 0;letter-spacing:-1.5px}
+.sub{color:var(--muted);max-width:600px;line-height:1.7}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:linear-gradient(145deg,var(--panel),#091018);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 12px 35px #0002}
+.statlabel{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.statvalue{font-size:30px;font-weight:850;margin-top:8px}.green{color:var(--green)}.red{color:var(--red)}.gold{color:var(--gold)}
+.report-tabs{display:flex;gap:8px;margin-bottom:18px}.tab{background:var(--panel);color:var(--muted);border:1px solid var(--line);padding:10px 16px;border-radius:9px;cursor:pointer;font-weight:700}.tab.active{background:#122319;color:var(--green);border-color:#1c5945}
+.report{display:none}.report.active{display:block}
+table{width:100%;border-collapse:collapse}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+th,td{text-align:left;padding:16px;border-bottom:1px solid var(--line);white-space:nowrap}th{font-size:11px;text-transform:uppercase;color:var(--muted);letter-spacing:1px}td{font-size:14px}tr:last-child td{border-bottom:0}
+.progress{height:6px;background:#17222e;border-radius:99px;overflow:hidden;width:100px;display:inline-block;vertical-align:middle;margin-left:8px}.progress i{display:block;height:100%;background:var(--green)}
+.aboutgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.list{display:grid;gap:10px}.item{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line)}.item:last-child{border:0}.item span:last-child{color:var(--muted)}
+.quote{border-left:3px solid var(--green);padding:18px 22px;background:#0b1513;border-radius:0 12px 12px 0;color:#c9d5df;line-height:1.7;margin-top:20px}
+.risk{background:linear-gradient(135deg,#101712,#0c1117);border:1px solid #244132;border-radius:18px;padding:30px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px}
+footer{border-top:1px solid var(--line);padding:35px 0;color:var(--muted);font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px}
+.disclaimer{font-size:11px;line-height:1.6;color:#657487;max-width:850px}
+@media(max-width:800px){.hero{grid-template-columns:1fr;min-height:auto;padding:80px 0}.terminal{display:none}.stats{grid-template-columns:1fr 1fr}.aboutgrid{grid-template-columns:1fr}.risk{grid-template-columns:1fr}.navlinks{display:none}h1{letter-spacing:-2px}}
+@media(max-width:480px){.stats{grid-template-columns:1fr}.sectionhead{display:block}.sectionhead .sub{margin-top:12px}.foot{display:block}}
+</style>
+</head>
+<body>
+
+<nav><div class="container nav">
+  <a class="logo" href="#home">RAJ <span>TR</span></a>
+  <div class="navlinks"><a href="#about">About</a><a href="#performance">Performance</a><a href="#reports">Reports</a><a href="#journey">Journey</a></div>
+</div></nav>
+
+<main>
+<section id="home" class="container hero">
+  <div>
+    <div class="badge"><i class="dot"></i> FOREX TRADER • BUILDING IN PUBLIC</div>
+    <h1>Trade the<br><span>process.</span></h1>
+    <p>I'm <b>Raj TR (Ritesh Raj Mandal)</b>, a forex trader focused on liquidity, disciplined execution, risk management and continuous improvement. This portfolio tracks my trading journey through real weekly and monthly performance reports.</p>
+    <div class="buttons"><a class="btn primary" href="#reports">View Trading Reports ↗</a><a class="btn" href="#about">My Approach</a></div>
+  </div>
+  <div class="terminal">
+    <div class="termhead"><span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="termtitle">RAJ-TR / PERFORMANCE</span></div>
+    <div class="chart"><div class="grid"></div>
+      <svg viewBox="0 0 500 300" preserveAspectRatio="none">
+        <polyline points="0,230 35,220 65,238 92,190 120,205 150,160 180,178 210,135 240,150 270,110 300,125 330,92 360,112 390,65 420,78 450,48 500,30" fill="none" stroke="#20d58a" stroke-width="4"/>
+        <polyline points="0,270 500,270" fill="none" stroke="#ffffff12"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="about"><div class="container">
+  <div class="sectionhead"><div><div class="eyebrow">01 / Profile</div><h2>About the trader</h2></div><p class="sub">A learning-first approach to forex: understand the market, execute the plan, journal the result, and improve one trade at a time.</p></div>
+  <div class="aboutgrid">
+    <div class="card">
+      <div class="eyebrow">Trader profile</div>
+      <h3 style="font-size:26px;margin:10px 0">Raj TR</h3>
+      <p style="color:var(--muted);line-height:1.8">Also known as <b style="color:white">Ritesh Raj Mandal</b>. My primary market interest is Forex, with a strong focus on Gold and liquidity-based setups.</p>
+      <div class="quote">“Trust the Process. Respect the Risk.”</div>
+    </div>
+    <div class="card list">
+      <div class="item"><span>Primary market</span><span>Forex</span></div>
+      <div class="item"><span>Main instrument</span><span>XAUUSD / Gold</span></div>
+      <div class="item"><span>Trading concept</span><span>Liquidity</span></div>
+      <div class="item"><span>Execution</span><span>Short timeframe</span></div>
+      <div class="item"><span>Analysis</span><span>Higher timeframe → 1M</span></div>
+      <div class="item"><span>Core principles</span><span>Risk • Discipline • Journal</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="performance"><div class="container">
+  <div class="sectionhead"><div><div class="eyebrow">02 / Dashboard</div><h2>Performance snapshot</h2></div></div>
+  <div class="stats">
+    <div class="card"><div class="statlabel">Starting balance</div><div class="statvalue">$500.00</div></div>
+    <div class="card"><div class="statlabel">Current tracked balance</div><div class="statvalue red">$458.43</div></div>
+    <div class="card"><div class="statlabel">Account return</div><div class="statvalue red">−8.31%</div></div>
+    <div class="card"><div class="statlabel">Total trades</div><div class="statvalue">61</div></div>
+  </div>
+  <div style="height:14px"></div>
+  <div class="stats">
+    <div class="card"><div class="statlabel">Wins</div><div class="statvalue green">19</div></div>
+    <div class="card"><div class="statlabel">Losses</div><div class="statvalue red">42</div></div>
+    <div class="card"><div class="statlabel">Win rate</div><div class="statvalue gold">31.15%</div></div>
+    <div class="card"><div class="statlabel">Focus</div><div class="statvalue" style="font-size:22px">Liquidity</div></div>
+  </div>
+</div></section>
+
+<section id="reports"><div class="container">
+  <div class="sectionhead"><div><div class="eyebrow">03 / Reports</div><h2>Trading reports</h2></div><p class="sub">Weekly performance is recorded separately so progress, mistakes and consistency can be reviewed over time.</p></div>
+  <div class="report-tabs"><button class="tab active" onclick="showReport('weekly',this)">Weekly Reports</button><button class="tab" onclick="showReport('monthly',this)">Monthly Report</button></div>
+  <div id="weekly" class="report active">
+    <div class="tablewrap"><table>
+      <thead><tr><th>Week</th><th>Period</th><th>Trades</th><th>Wins</th><th>Losses</th><th>Win Rate</th><th>Net P&L</th></tr></thead>
+      <tbody>
+        <tr><td>WEEK 1</td><td>Aug 03 – Aug 07</td><td>11</td><td class="green">6</td><td class="red">5</td><td>54.55% <span class="progress"><i style="width:54.55%"></i></span></td><td class="green">+$28.80</td></tr>
+        <tr><td>WEEK 2</td><td>Aug 10 – Aug 14</td><td>—</td><td>—</td><td>—</td><td>—</td><td>Report data not recorded</td></tr>
+        <tr><td>WEEK 3</td><td>Aug 17 – Aug 21</td><td>18</td><td class="green">6</td><td class="red">12</td><td>33.33% <span class="progress"><i style="width:33.33%"></i></span></td><td class="red">−$6.28</td></tr>
+        <tr><td>WEEK 4</td><td>Aug 24 – Aug 28</td><td>16</td><td class="green">4</td><td class="red">12</td><td>25.00% <span class="progress"><i style="width:25%"></i></span></td><td class="red">−$28.95</td></tr>
+        <tr><td>WEEK 5</td><td>Aug 31 – Sep 04</td><td>9</td><td class="green">1</td><td class="red">8</td><td>11.11% <span class="progress"><i style="width:11.11%"></i></span></td><td class="red">−$19.96</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div id="monthly" class="report">
+    <div class="stats" style="margin-bottom:18px">
+      <div class="card"><div class="statlabel">August 2026</div><div class="statvalue">Month 1</div></div>
+      <div class="card"><div class="statlabel">Tracked starting balance</div><div class="statvalue">$500.00</div></div>
+      <div class="card"><div class="statlabel">Latest balance</div><div class="statvalue red">$458.43</div></div>
+      <div class="card"><div class="statlabel">Return</div><div class="statvalue red">−8.31%</div></div>
+    </div>
+    <div class="tablewrap"><table><thead><tr><th>Month</th><th>Trades</th><th>Wins</th><th>Losses</th><th>Win Rate</th><th>Return</th></tr></thead>
+    <tbody><tr><td>August 2026</td><td>61</td><td class="green">19</td><td class="red">42</td><td>31.15%</td><td class="red">−8.31%</td></tr></tbody></table></div>
+  </div>
+</div></section>
+
+<section id="journey"><div class="container">
+  <div class="sectionhead"><div><div class="eyebrow">04 / Method</div><h2>The trading framework</h2></div></div>
+  <div class="stats">
+    <div class="card"><div class="eyebrow">01</div><h3>Higher TF Analysis</h3><p class="sub">Mark structure, important levels and areas where liquidity may be resting.</p></div>
+    <div class="card"><div class="eyebrow">02</div><h3>Liquidity</h3><p class="sub">Wait for a meaningful liquidity sweep or liquidity-based setup instead of chasing price.</p></div>
+    <div class="card"><div class="eyebrow">03</div><h3>Execution</h3><p class="sub">Use a lower timeframe for precise entries, with defined invalidation and risk before entry.</p></div>
+    <div class="card"><div class="eyebrow">04</div><h3>Journal</h3><p class="sub">Record the setup, execution, result and lesson. The goal is process improvement, not revenge trading.</p></div>
+  </div>
+  <div style="margin-top:25px" class="risk"><div><div class="eyebrow">Risk statement</div><h3 style="font-size:26px;margin:8px 0">Respect the risk. Protect the account.</h3><p class="sub">Trading is uncertain. A losing trade is part of the process; breaking the plan is the real mistake.</p></div><div style="font-size:54px">↗</div></div>
+</div></section>
+</main>
+
+<footer><div class="container foot">
+  <div><b style="color:white">RAJ <span style="color:var(--green)">TR</span></b><br>Forex Trader • Ritesh Raj Mandal</div>
+  <div style="text-align:right">© 2026 Raj TR<br><span class="disclaimer">Disclaimer: This website is for educational and personal portfolio purposes only. Trading forex and CFDs involves substantial risk and may not be suitable for everyone. Past performance does not guarantee future results. Nothing here is financial advice.</span></div>
+</div></footer>
+
+<script>
+function showReport(id,btn){
+  document.querySelectorAll('.report').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
